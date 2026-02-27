@@ -1,2 +1,5 @@
 .history/
 config.json
+dist/
+build/
+*.spec
