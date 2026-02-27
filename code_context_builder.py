@@ -4,6 +4,7 @@ into a single text block for pasting into LLM chats.
 """
 
 import json
+import sys
 import os
 from pathlib import Path
 import tkinter as tk
@@ -13,7 +14,18 @@ from tkinter import ttk, filedialog, messagebox
 # Config
 # ==============================================================
 
-CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+def get_config_file_path():
+    # Running as PyInstaller exe
+    if getattr(sys, "frozen", False):
+        appdata = os.getenv("APPDATA") or os.path.expanduser("~")
+        app_dir = os.path.join(appdata, "CodeContextBuilder")
+        os.makedirs(app_dir, exist_ok=True)
+        return os.path.join(app_dir, "config.json")
+
+    # Running as normal .py script
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+
+CONFIG_FILE = get_config_file_path()
 
 DEFAULT_CONFIG = {
     "project_folders": {},  # name -> path
