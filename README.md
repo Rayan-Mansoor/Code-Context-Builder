@@ -11,7 +11,10 @@ When working with LLMs on coding tasks, you often need to share multiple files a
 ## Features
 
 - **Project Folders** — Save and switch between frequently used project directories
-- **Multi-file Selection** — Add files from anywhere, reorder with drag controls
+- **Folder Tree File Picker** — Browse your entire project tree with all subfolders visible at once — no more navigating in and out of directories to select files scattered across folders
+- **Highlight-Based Selection** — Click files to select them (highlighted in a distinct color), click again to deselect. Double-click a folder to select all files inside it
+- **Selection Order Preserved** — Files appear in the merged output in the exact order you clicked them
+- **Smart Filtering** — Type in the filter bar to instantly narrow the tree by filename (e.g. `.tsx`, `controller`)
 - **Smart Formatting** — Auto-detects 60+ languages and wraps content in appropriate markdown code blocks
 - **Two Divider Modes** — Fenced code blocks (``` syntax) or custom line dividers
 - **Live Preview** — Editable output panel lets you tweak before copying
@@ -44,7 +47,7 @@ No external dependencies required — runs on the Python standard library.
 ## Usage
 
 1. **Add a Project Folder** — Click `+ Add` under Project Folders and select your project root
-2. **Select Files** — Click `+ Add Files` to pick the code files you want to include
+2. **Select Files** — Click `+ Add Files` to open the folder tree picker, then click files to select them (they highlight green). Use the filter bar to narrow results. Double-click a folder to select all files within it.
 3. **Arrange Order** — Use the ▲/▼ buttons to reorder files as needed
 4. **Configure Output** — Toggle filename headers, choose divider mode, customize the divider string
 5. **Copy or Save** — Hit `Copy` to clipboard or `Download .txt` to save
@@ -56,6 +59,19 @@ No external dependencies required — runs on the Python standard library.
 | `Ctrl+R`       | Regenerate preview |
 | `Ctrl+S`       | Save as .txt       |
 | `Ctrl+Shift+C` | Copy to clipboard  |
+
+### Folder Tree Picker
+
+The file picker shows your full project structure as a tree — all files across all subfolders are visible at once.
+
+- **Single click on a file** — toggles selection (green highlight)
+- **Single click on a folder** — expands or collapses it
+- **Double-click on a folder** — selects all files inside it (and expands if collapsed)
+- **Filter bar** — type to filter files by name across the entire tree
+- **Select All Visible / Deselect All** — bulk actions for quick selection
+- **Browse button** — change the root folder without closing the picker
+
+Common directories like `node_modules`, `.git`, `__pycache__`, `venv`, `dist`, and `build` are automatically hidden to keep the tree clean.
 
 ## Configuration
 
